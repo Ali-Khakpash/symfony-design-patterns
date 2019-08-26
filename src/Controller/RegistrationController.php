@@ -1,42 +1,43 @@
 <?php
-
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\RegistrationFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use AppBundle\Entity\User;
+use AppBundle\Form\UserType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
-class RegistrationController extends AbstractController
+class RegistrationController extends Controller
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/register", name="register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function registerAction(Request $request)
     {
+        // Create a new blank user and process the form
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            //$user->setEmail();
+            // Encode the new users password
+            $encoder = $this->get('security.password_encoder');
+            $password = $encoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            // Set their role
+            $user->setRole('ROLE_USER');
 
-            // do anything else you need here, like send an email
+            // Save
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
-            //return $this->redirectToRoute('/rrrr');
+            return $this->redirectToRoute('login');
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+        return $this->render('auth/register.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

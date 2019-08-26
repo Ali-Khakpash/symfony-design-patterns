@@ -1,4 +1,6 @@
 security:
+    encoders:
+        AppBundle\Entity\User: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: null }
@@ -7,7 +9,16 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
+            guard:
+                authenticators:
+                    - App\Security\FormLoginAuthenticator
+            logout:
+                path: /logout
+                target: /
+
+                # where to redirect after logout
+                # target: app_any_route
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
