@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{#{% if app.user != null %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="/superuserprofile">Visit SuperUser Profile</a>
+    {% endif %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="#">Visit Products</a>
+    {% endif %}
+
+ {% endif %}#}
+
+{% block body %}
+
+    Hello Man
+
+    <h3> {{obj.id}} </h3>
+
+    <h3> {{obj.email}} </h3>
+
+{% endblock %}
+
+
+
+{#{% if app.user == null %}
+    ops not Authenticated
+{% endif %}#}
+
+

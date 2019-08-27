@@ -1,43 +1,55 @@
 <?php
+
 namespace App\Controller;
 
-use AppBundle\Entity\User;
-use AppBundle\Form\UserType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Entity\User;
+use App\Form\RegistrationFormType;
+use App\Security\LoginFormAuthenticator;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
-class RegistrationController extends Controller
+class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="app_register")
      */
-    public function registerAction(Request $request)
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
-        // Create a new blank user and process the form
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Encode the new users password
-            $encoder = $this->get('security.password_encoder');
-            $password = $encoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
+            // encode the plain password
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
 
-            // Set their role
-            $user->setRole('ROLE_USER');
+            $user->setRoles(['ROLE_USER']);
 
-            // Save
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('login');
+            // do anything else you need here, like send an email
+
+            return $guardHandler->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $authenticator,
+                'main' // firewall name in security.yaml
+            );
         }
 
-        return $this->render('auth/register.html.twig', [
-            'form' => $form->createView(),
+        return $this->render('registration/register.html.twig', [
+            'registrationForm' => $form->createView(),
         ]);
     }
 }

@@ -1,121 +1,115 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity
- * @UniqueEntity(fields="email", message="This email address is already in use")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
     /**
-     * @ORM\Id;
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    protected $email;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="json")
      */
-    protected $name;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
-    protected $role;
+    private $password;
 
-    /**
-     * @Assert\Length(max=4096)
-     */
-    protected $plainPassword;
-
-    /**
-     * @ORM\Column(type="string", length=64)
-     */
-    protected $password;
-
-    public function eraseCredentials()
-    {
-        return null;
-    }
-
-    public function getRole()
-    {
-        return $this->role;
-    }
-
-    public function setRole($role = null)
-    {
-        $this->role = $role;
-    }
-
-    public function getRoles()
-    {
-        return [$this->getRole()];
-    }
-
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getUsername()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function setEmail($email)
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
     }
 
-    public function getPassword()
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->password;
+        return (string) $this->email;
     }
 
-    public function setPassword($password)
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
     }
 
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($plainPassword)
-    {
-        $this->plainPassword = $plainPassword;
-    }
-
+    /**
+     * @see UserInterface
+     */
     public function getSalt()
     {
-        return null;
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }
