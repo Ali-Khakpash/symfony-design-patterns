@@ -95,7 +95,7 @@ class Product
 
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = new \DateTime("now");
 
         return $this;
     }

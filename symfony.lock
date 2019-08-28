@@ -117,6 +117,9 @@
     "monolog/monolog": {
         "version": "1.24.0"
     },
+    "narmafzam/jalali-date-bundle": {
+        "version": "0.2.0"
+    },
     "nikic/php-parser": {
         "version": "v4.2.3"
     },

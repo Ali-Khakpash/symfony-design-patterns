@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7666d41150044cbffd23e9f2dfac6ab",
+    "content-hash": "1218f32c75714b2cc6bc91bb15b396fb",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1446,6 +1446,49 @@
                 "psr-3"
             ],
             "time": "2018-11-05T09:00:11+00:00"
+        },
+        {
+            "name": "narmafzam/jalali-date-bundle",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/narmafzam/NarmafzamJalaliDateBundle.git",
+                "reference": "d13df291ebfe059b7b0f741b01001f7fe2e28328"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/narmafzam/NarmafzamJalaliDateBundle/zipball/d13df291ebfe059b7b0f741b01001f7fe2e28328",
+                "reference": "d13df291ebfe059b7b0f741b01001f7fe2e28328",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "php": "^5.5.9 || ^7.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ],
+                "psr-4": {
+                    "Narmafzam\\JalaliDateBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Peyman Mohamadpour",
+                    "email": "peyman@narmafzam.com"
+                }
+            ],
+            "description": "A symfony 3 bundle to handle Jalali date including a date picker",
+            "keywords": [
+                "Symfony jalali shamsi khorshidi persian date picker bundle"
+            ],
+            "time": "2019-06-16T13:19:42+00:00"
         },
         {
             "name": "ocramius/package-versions",

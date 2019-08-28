@@ -3,6 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Entity\Product;
+use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -19,22 +21,32 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-         $user = new User();
-         $user->setEmail('ali@gmail.com');
-         $user->setPassword($this->passwordEncoder->encodePassword(
+
+         $category = new Category();
+         $category->setName('Computer Peripherals');
+
+         $product = new Product();
+         $product->setName('White Hat');
+/*         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
             'stalingerad1945'
-        ));
+        ))*/;
 
-         $user->setRoles(['ROLE_USER','ROLE_ADMIN']);
+         $product->setPrice(50.35);
+         $product->setDescription('Just For Hackers');
+         $product->setCreatedAt(new \DateTime());
+         // relates this product to the category
+         $product->setCategory($category);
 
-         $manager->persist($user);
+
+         $manager->persist($product);
+         $manager->persist($category);
 
 
          $manager->flush();
 
 
-        $user = new User();
+/*        $user = new User();
         $user->setEmail('saman@gmail.com');
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
@@ -46,7 +58,7 @@ class UserFixtures extends Fixture
         $manager->persist($user);
 
 
-        $manager->flush();
+        $manager->flush();*/
     }
 
 }
