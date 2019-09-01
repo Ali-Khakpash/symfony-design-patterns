@@ -8,6 +8,7 @@ use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\ProductRepository;
 
 
 class UserFixtures extends Fixture
@@ -25,6 +26,8 @@ class UserFixtures extends Fixture
          $category = new Category();
          $category->setName('Computer Peripherals');
 
+        //$repo= $this->getDoctrine()->getRepository(Category::class);
+
          $product = new Product();
          $product->setName('White Hat');
 /*         $user->setPassword($this->passwordEncoder->encodePassword(
@@ -32,7 +35,7 @@ class UserFixtures extends Fixture
             'stalingerad1945'
         ))*/;
 
-         $product->setPrice(50.35);
+         $product->setPrice(55.35);
          $product->setDescription('Just For Hackers');
          $product->setCreatedAt(new \DateTime());
          // relates this product to the category
@@ -42,6 +45,31 @@ class UserFixtures extends Fixture
          $manager->persist($product);
          $manager->persist($category);
 
+
+        //Second Test
+        $category = new Category();
+        $category->setName('Computer Peripherals');
+
+
+
+        $product = new Product();
+        $product->setName('Red Bulls');
+        /*         $user->setPassword($this->passwordEncoder->encodePassword(
+                    $user,
+                    'stalingerad1945'
+                ))*/;
+
+        $product->setPrice(1000.35);
+        $product->setDescription('Just For Bastards');
+        $product->setCreatedAt(new \DateTime());
+        // relates this product to the category
+        $product->setCategory($category);
+
+
+        $manager->persist($product);
+       // if() {
+            $manager->persist($category);
+       // }
 
          $manager->flush();
 

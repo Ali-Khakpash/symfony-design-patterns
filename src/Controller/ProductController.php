@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
@@ -35,6 +36,7 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $product->setCreatedAt(new \DateTime());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
@@ -53,8 +55,8 @@ class ProductController extends AbstractController
      */
     public function show(Product $product): Response
     {
-        //$repository = $this->getDoctrine()->getRepository(Product::class);
-       // $product = $repository->findOneBy(['name' => $product->getName()]);
+       // $repository = $this->getDoctrine()->getRepository(Product::class);
+       //$product = $repository->findOneBy(['name' => $product->getName()]);
 
         return $this->render('product/show.html.twig', [
             'product' => $product,

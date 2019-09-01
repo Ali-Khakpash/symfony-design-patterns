@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\CustomFunctions\gregorian2jalali;
+use Morilog\Jalali\Jalalian;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -32,7 +34,7 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     private $created_at;
 
@@ -88,15 +90,14 @@ class Product
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?string
     {
         return $this->created_at;
     }
 
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
-        $this->created_at = new \DateTime("now");
-
+        $this->created_at = Jalalian::now();
         return $this;
     }
 

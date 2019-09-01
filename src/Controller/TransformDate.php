@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Morilog\Jalali\Jalalian;
 use Narmafzam\JalaliDateBundle\Form\DataTransformer\NarmafzamDateTransformer;
 use Narmafzam\JalaliDateBundle\Form\DataTransformer;
 use Narmafzam\JalaliDateBundle\Model\Converter\DateConverter;
@@ -29,14 +30,16 @@ class TransformDate extends AbstractController
     {
 
 
-        $this->test;
+ /*       $this->test;
         $jalali = new gregorian2jalali;
-        $jalali->mydate = "2007-02-13-1";
-        $jal = $jalali->gregorian_to_jalali("yy/mm/dd");
+        $jalali->mydate = "2007-02-14 H:i:s";
+        $jal = $jalali->gregorian_to_jalali("yy/mm/dd");*/
+
+        $date = Jalalian::now();
 
 
         return new Response(
-            'Date:'.$jal,
+            'Date:'.$date,
             Response::HTTP_OK
         );
 

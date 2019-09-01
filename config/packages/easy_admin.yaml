@@ -1,0 +1,29 @@
+# config/packages/easy_admin.yaml
+
+easy_admin:
+    user:
+      display_name: true
+      display_avatar: true
+    site_name: '<div>
+        <h1 style="color:red; float:right;" > Hosted PBX </h2>
+    </div>'
+    design:
+      brand_color: 'red'
+      rtl: false
+      assets:
+        # all kinds of assets are supported and linked accordingly
+        css:
+           - 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+           - 'http://localhost/css/main.css'
+        js:
+           - 'https://code.jquery.com/jquery-3.2.1.slim.min.js'
+           - 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'
+           - 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'
+    entities:
+       # List the entity class name you want to manage
+     User:
+         class: App\Entity\User
+     Product:
+         class: App\Entity\Product
+     Category:
+         class: App\Entity\Category

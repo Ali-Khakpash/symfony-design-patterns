@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Product;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,8 +16,8 @@ class ProductType extends AbstractType
             ->add('name')
             ->add('price')
             ->add('description')
-            ->add('created_at')
-            ->add('updated_at')
+            //->add('created_at')
+           // ->add('updated_at')
         ;
     }
 

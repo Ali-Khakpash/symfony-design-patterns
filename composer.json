@@ -5,9 +5,8 @@
         "php": "^7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "easycorp/easyadmin-bundle": "^2.3",
         "morilog/jalali": "3.*",
-        "phpclasses/gregorian-2-jalali": ">=1.0.0",
-        "narmafzam/jalali-date-bundle": "^0.2.0",
         "sensio/framework-extra-bundle": "^5.4",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
@@ -29,6 +28,7 @@
         "symfony/twig-bundle": "4.3.*",
         "symfony/validator": "4.3.*",
         "symfony/web-link": "4.3.*",
+        "symfony/webpack-encore-bundle": "^1.6",
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {
