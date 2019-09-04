@@ -1,0 +1,12 @@
+echo some-text  > filename.txt
+
+notepad CommitTest.txt
+
+git commit -m "the message"
+
+
+
+
+netstat -an
+
+ifconfig

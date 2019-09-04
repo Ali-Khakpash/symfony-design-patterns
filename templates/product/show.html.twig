@@ -23,6 +23,12 @@
                 <th>Description</th>
                 <td>{{ product.description }}</td>
             </tr>
+
+            <tr>
+                <th>Catogery</th>
+                <td>{{ product.category.name }}</td>
+            </tr>
+
             <tr>
                 <th>Created_at</th>
                 <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
@@ -31,12 +37,47 @@
                 <th>Updated_at</th>
                 <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+
+
+{#
+           <tr>
+                <th>Category</th>
+                <td>{{ category.getProducts()[0]}}</td>
+            </tr>
+#}
+
         </tbody>
     </table>
 
+
+   <table class="table">
+        <thead>
+        <tr>products</tr>
+        </thead>
+
+        <tbody>
+
+        {% for cat in category.getProducts() %}
+
+            {% if cat.name != product.name %}
+        <tr>
+            <td> {{ cat.name }}</td>
+        </tr>
+
+            {% endif %}
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+
+
+
     <a href="{{ path('product_index') }}">back to list</a>
 
-    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+  {#  <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>#}
 
     {{ include('product/_delete_form.html.twig') }}
 {% endblock %}

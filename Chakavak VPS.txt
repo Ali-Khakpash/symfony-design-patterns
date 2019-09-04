@@ -1,0 +1,23 @@
+SSH Info :
+
+Ip:
+
+172.25.18.206
+
+ali pass:
+
+chakavak
+
+ssh port : 22
+
+
+cd /home/freeblox/
+
+db_mgr.php 
+
+
+
+freeBlox :
+
+$DB_FILE_PERSIST = "/etc/freeblox_conf/DB/freeblox.db.persist";
+

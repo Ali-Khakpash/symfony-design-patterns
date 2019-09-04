@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/product")
  */
-class ProductController extends AbstractController
+class ProductController extends  AppController
 {
     /**
      * @Route("/", name="product_index", methods={"GET"})
@@ -51,15 +52,17 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{price}", name="product_show", methods={"GET"})
+     * @Route("/{name}", name="product_show", methods={"GET"})
      */
     public function show(Product $product): Response
     {
-       // $repository = $this->getDoctrine()->getRepository(Product::class);
-       //$product = $repository->findOneBy(['name' => $product->getName()]);
+        $repository = $this->getDoctrine()->getRepository(Category::class);
+        $category = $repository->findOneBy(['id' => $product->getCategory()->getId()]);
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
+            'category' => $category
+
         ]);
     }
 

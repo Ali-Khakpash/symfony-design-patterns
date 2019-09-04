@@ -1,0 +1,64 @@
+php bin/console server:run
+php bin/console --version
+
+php bin/console cache:clear
+
+php bin/console list doctrine
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
+
+php bin/console make:entity
+hp bin/console make:entity --regenerate
+
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
+php bin/console make:controller
+
+make:registration-form
+
+php bin/console doctrine:fixtures:load
+
+composer require symfony/maker-bundle --dev
+php bin/console make:crud
+
+php app/console assets:install
+
+php bin/console debug:router
+
+
+
+
+gitHub Account :
+
+username:Ali-Khakpash
+email:ali.khakpash@gmail.com
+pass:stalingerad1945
+
+
+cd C:\Bitnami\wampstack-7.2.21-0\apache2\htdocs\myProject
+
+
+نام و نام خانوادگی
+
+ایمیل
+
+ذخیره کن
+
+
+
+
+    /**
+     * @Route("/convertdate", name="convertdate", methods={"GET"})
+     */
+
+    public function converDate (NarmafzamDateTransformer $shamsiString): Response
+    {
+
+
+        $shamsiString->get('narmafzam.j_date_service')->georgianToPersian(new \DateTime(), 'yyyy-MM-dd E');
+      //  echo $shamsiString;
+        return new  Response('<h3> Hi Lets Change To the Perfect Jalali Date Calander  </h3>
+
+<h2>Example : echo .$shamsiString </h2>');
+    }

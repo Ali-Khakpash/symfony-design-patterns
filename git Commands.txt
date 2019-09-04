@@ -1,0 +1,13 @@
+  
+git remote add firstRemote https://github.com/Ali-Khakpash/symfony-vue.js
+
+git checkout 91f25642453
+
+git checkout master
+
+git push -f origin master
+git push -f secondRemote master
+
+git pull firstRemote master
+
+git commit -m "the message"
