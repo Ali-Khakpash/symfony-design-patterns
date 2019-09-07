@@ -199,6 +199,7 @@
       <workItem from="1567483844135" duration="20281000" />
       <workItem from="1567504903656" duration="1384000" />
       <workItem from="1567570836750" duration="19206000" />
+      <workItem from="1567830595757" duration="23321000" />
     </task>
     <servers />
   </component>
@@ -252,7 +253,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/HostedPBX/index.html.twig</url>
-          <line>509</line>
+          <line>513</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -264,6 +265,11 @@
           <url>file://$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php</url>
           <line>4</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/login.html.twig</url>
+          <line>15</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

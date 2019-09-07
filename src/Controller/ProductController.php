@@ -86,6 +86,7 @@ class ProductController extends  AppController
         ]);
     }
 
+
     /**
      * @Route("/{id}", name="product_delete", methods={"DELETE"})
      */

@@ -2,6 +2,7 @@
 // src/Security/LoginFormAuthenticator.php
 namespace App\Security;
 
+use App\Entity\HostedPBXUser;
 use App\Entity\User;
 use App\Entity\UserHandle;
 use Doctrine\ORM\EntityManagerInterface;
@@ -48,13 +49,16 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function getCredentials(Request $request)
     {
         $credentials = [
-            'name' => $request->request->get('name'),
+            'email' => $request->request->get('email'),
             'password' => $request->request->get('password'),
+            'tenant' => $request->request->get('tenant'),
+            'company' => $request->request->get('company'),
+            'did' => $request->request->get('did'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['name']
+            $credentials['email']
         );
 
         return $credentials;
@@ -67,7 +71,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(UserHandle::class)->findOneBy(['name' => $credentials['name']]);
+        $user = $this->entityManager->getRepository(HostedPBXUser::class)->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
             // fail authentication with a custom error
@@ -88,7 +92,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        /* For example :*/ return new RedirectResponse($this->router->generate('app_login'));
+        /* For example :*/ return new RedirectResponse($this->router->generate('index'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

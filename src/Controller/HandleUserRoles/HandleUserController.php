@@ -2,7 +2,10 @@
 namespace App\Controller\HandleUserRoles;
 
 use App\Entity\Category;
-use App\Repository\ProductRepository;
+use App\Entity\Product;
+use App\Entity\User;
+use App\Form\ProductType;
+use App\Repository\UserHandleRepository;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\UserHandle;
 use App\Entity\RoleHandle;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Tests\Encoder\PasswordEncoder;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 
@@ -19,6 +23,35 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
  */
 
 class HandleUserController extends AbstractController {
+
+
+
+
+    /**
+     * @Route("/", name="user_index", methods={"GET"})
+     */
+    public function showAllUsers(UserHandleRepository $userHandleRepositoryRepository): Response
+    {
+        return $this->render('HandleUser/userlist.html.twig', [
+            'users' => $userHandleRepositoryRepository->findAll(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/{id}", name="user_show", methods={"GET"})
+     */
+    public function show(UserHandle $userHandle): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Category::class);
+        // $category = $repository->findOneBy(['id' => $userHandle->getCategory()->getId()]);
+
+        return $this->render('HandleUser/singleuser.html.twig', [
+            'user' => $userHandle,
+
+        ]);
+    }
+
 
     /**
      * @Route("/add", name="addUserIndex", methods={"GET"})
@@ -52,8 +85,8 @@ class HandleUserController extends AbstractController {
         //$user->addUserRole($role->setRole($request->get('role')));
         $user->setRoles(explode(" ",strtoupper('ROLE_'.$request->get('role'))));
 
-       // $role->setRole($check2);
-       $user->addUserRole($role->setRole('n'));
+        // $role->setRole($check2);
+        // $user->addUserRole($role->setRole('n'));
 
         $entityManager = $this->getDoctrine()->getManager();
         if(!$check1){
@@ -62,9 +95,9 @@ class HandleUserController extends AbstractController {
         else{
             return new Response('ops this user was added before');
         }
-       // if(){
-            $entityManager->persist($role);
-     //   }
+        // if(){
+        $entityManager->persist($role);
+        //   }
 
         $entityManager->flush();
 
@@ -72,6 +105,28 @@ class HandleUserController extends AbstractController {
             /*'products' => $productRepository->findAll(),*/
         ]);
     }
+
+
+    /**
+     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     */
+    public function edit(UserHandle $userHandle , Request $request ): Response
+    {
+
+        $userHandle->setName(strval($request->get('name')));
+        //$userHandle->setPassword('ggh');
+        $userHandle->setRoles(explode(" ",strtoupper('ROLE_'.$request->get('role'))));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($userHandle);
+        $entityManager->flush();
+
+        return $this->render('HandleUser/edituser.html.twig', [
+            'user' => $userHandle,
+        ]);
+    }
+
+
 
 
     /**
