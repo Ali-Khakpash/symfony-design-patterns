@@ -71,14 +71,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(HostedPBXUser::class)->findOneBy(['email' => $credentials['email']]);
+        $user = $this->entityManager->getRepository(HostedPBXUser::class)->findBy(array('email' => $credentials['email'] ,
+            'tenant' => $credentials['tenant'] , 'company' => $credentials['company'] , 'did' => $credentials['did']));
 
         if (!$user) {
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Email could not be found.');
         }
 
-        return $user;
+        return $user[0];
     }
 
 /*    public function checkCredentials($credentials, UserInterface $user)
@@ -118,7 +119,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function checkCredentials($credentials, UserInterface $user)
     {
+
+ /*       if($credentials['tenant'] == $user){
+            return true;
+        }*/
+
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+
     }
 
 }

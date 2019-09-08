@@ -42,6 +42,11 @@ class HostedPBXUser implements UserInterface
      */
     private $did;
 
+    /**
+     * @ORM\Column(type="string", length=300, nullable=true)
+     */
+    private $remember_token;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -157,5 +162,17 @@ class HostedPBXUser implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getRememberToken(): ?string
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken(?string $remember_token): self
+    {
+        $this->remember_token = $remember_token;
+
+        return $this;
     }
 }
