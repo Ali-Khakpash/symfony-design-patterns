@@ -2,25 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="922123d5-5c22-472d-94dc-312a2a73783e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/fos_user.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/email/ResetPass.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/email/email.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/email/resetpass.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony-chakavak.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony-chakavak.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/HostedPBX/MenuFragmentController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/HostedPBX/MenuListsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/HostedPBX/WebApi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/HostedPBX/Menu/_menuFragment.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HostedPBX/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HostedPBX/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HostedPBXUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HostedPBXUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/HostedPBXUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/HostedPBXUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/email/ResetPass.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/email/ResetPass.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/HostedPBX/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/HostedPBX/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/HostedPBX/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/HostedPBX/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/email/resetpass.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/email/resetpass.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -198,6 +192,11 @@
       <workItem from="1567570836750" duration="19206000" />
       <workItem from="1567830595757" duration="23321000" />
       <workItem from="1567915800531" duration="19254000" />
+      <workItem from="1568434603472" duration="17107000" />
+      <workItem from="1568520850403" duration="11663000" />
+      <workItem from="1568607849952" duration="1392000" />
+      <workItem from="1568695420419" duration="18323000" />
+      <workItem from="1568780053822" duration="20068000" />
     </task>
     <servers />
   </component>
@@ -250,11 +249,6 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/templates/HostedPBX/index.html.twig</url>
-          <line>513</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/HostedPBXBase.html.twig</url>
           <line>517</line>
           <option name="timeStamp" value="7" />
@@ -273,6 +267,100 @@
           <url>file://$PROJECT_DIR$/templates/email/email.html.twig</url>
           <line>40</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/HostedPBX/MenuListsController.php</url>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>54</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/_menuFragment.html.twig</url>
+          <line>515</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/_menuFragment.html.twig</url>
+          <line>711</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/index.html.twig</url>
+          <line>511</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/_menuFragment.html.twig</url>
+          <line>1541</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/_menuFragment.html.twig</url>
+          <line>239</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>457</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>470</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>68</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>191</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>168</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>193</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>217</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>379</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>391</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>351</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>178</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/HostedPBX/Menu/extension.html.twig</url>
+          <line>87</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

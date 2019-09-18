@@ -25,6 +25,7 @@
           <!-- form start -->
           <form role="form" method="post" action="{{ path('app_login') }}">
 
+
             {% if error %}
               <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'HostedPBX') }}</div>
             {% endif %}
@@ -53,6 +54,7 @@
                 <label for="exampleInputPassword1">DID</label>
                 <input type="text" name="did" class="form-control" id="exampleInputPassword1" placeholder="DID">
               </div>
+
 
               <input type="hidden" name="_csrf_token"
                      value="{{ csrf_token('authenticate') }}"
