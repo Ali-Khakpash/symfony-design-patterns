@@ -89,23 +89,26 @@ h3.box-title{
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
+                                <th> extension_uuid </th>
+   {#                             <th>Name</th>
                                 <th>Price</th>
                                 <th>Description</th>
                                 <th>Catogory Type</th>
                                 <th>Created_at</th>
                                 <th>Updated_at</th>
-                                <th>actions</th>
+                                <th>actions</th>#}
                             </tr>
                             </thead>
 
+
                             <tbody>
-
+                            {% for pro in resp %}
                                 <tr>
-                                    <td>  {{ resp[0]["domain_uuid"] }} </td>
+                                    <td> {{ pro['extension_uuid'] }} </td>
+                                    <td>   <a class="btn" href="{{ path('deleteextension', {'uuid': pro['extension_uuid']}) }}"> delete </a>   </td>
+                                    <td> <a class="btn" href="#"> update  </a> </td>
                                 </tr>
-
+                            {% endfor %}
                             </tbody>
 
 {#                            <tr>
@@ -1263,7 +1266,7 @@ h3.box-title{
 
     <!--Creates the popup content-->
     <div class="popup-content col-xs-12">
-        <form class="" style="" action="https://stackoverflow.com/questions/10291693/cannot-read-property-getcontext-of-null-using-canvas">
+        <form class="" action="{{ path('postextention') }}" method="post">
 
             <div class="col-xs-12">
 
@@ -1274,14 +1277,14 @@ h3.box-title{
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="pwd">Effective caller ID Name:</label>
-                        <input type="password" class="form-control" id="pwd">
+                        <input type="text" class="form-control" id="pwd" name="effective_caller_id_name">
                     </div>
                 </div>
 
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="pwd">Effective Caller ID Number:</label>
-                        <input type="password" class="form-control" id="pwd">
+                        <input type="text" class="form-control" id="pwd" name="effective_caller_id_number">
                     </div>
                 </div>
 
@@ -1356,14 +1359,14 @@ h3.box-title{
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="pwd">Limit Max:</label>
-                        <input type="password" class="form-control" id="pwd">
+                        <input name="limit_max" type="text" class="form-control" id="pwd">
                     </div>
                 </div>
 
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="pwd">Limit Destination:</label>
-                        <input type="password" class="form-control" id="pwd">
+                        <input name="limit_destination" type="text" class="form-control" id="pwd">
                     </div>
                 </div>
 
@@ -1379,7 +1382,7 @@ h3.box-title{
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="pwd">Call Timeout:</label>
-                        <input type="password" class="form-control" id="pwd">
+                        <input name="call_timeout" type="text" class="form-control" id="pwd">
                     </div>
                 </div>
 
@@ -1394,7 +1397,7 @@ h3.box-title{
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox">
+                                <input name="missed_call_app" type="checkbox">
                                 Missed Call Enabled
                             </label>
                         </div>
@@ -1413,7 +1416,7 @@ h3.box-title{
                 <div class="col-xs-12" style="margin-top:-10px !important;">
                     <div class="form-group">
                         <label for="inputState">Hold Music</label>
-                        <select id="inputState" class="form-control">
+                        <select name="hold_music" id="inputState" class="form-control">
                             <option selected>Music</option>
                             <option>Ring Tones</option>
                         </select>
@@ -1431,7 +1434,7 @@ h3.box-title{
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox">
+                                <input name="user_record" type="checkbox">
                                 Record Enabled
                             </label>
                         </div>
@@ -1441,6 +1444,9 @@ h3.box-title{
 
             </div>
 
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
 
             {#
                                     <div class="col-xs-12">
