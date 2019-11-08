@@ -16,7 +16,6 @@ return [
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     App\Acme\TestBundle\AcmeTestBundle::class => ['all' => true],
-    Narmafzam\JalaliDateBundle\NarmafzamJalaliDateBundle::class => ['all' => true],
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
     FOS\UserBundle\FOSUserBundle::class => ['all' => true],

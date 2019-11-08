@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Factory_InsertDB\Model;
 use Doctrine\ORM\Mapping as ORM;
 use App\CustomFunctions\gregorian2jalali;
 use Morilog\Jalali\Jalalian;
@@ -9,7 +10,7 @@ use Morilog\Jalali\Jalalian;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
-class Product
+class Product implements Model
 {
     /**
      * @ORM\Id()

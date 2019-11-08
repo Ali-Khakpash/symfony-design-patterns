@@ -57,11 +57,11 @@ class ProductController extends  AppController
     public function show(Product $product): Response
     {
         $repository = $this->getDoctrine()->getRepository(Category::class);
-        $category = $repository->findOneBy(['id' => $product->getCategory()->getId()]);
+//        $category = $repository->findOneBy(['id' => $product->getCategory()->getId()]);
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
-            'category' => $category
+//            'category' => $category
 
         ]);
     }

@@ -25,11 +25,12 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.description }}</td>
-                <td> {{ product.category.name }} </td>
+{#                <td> {{ product.category.name }} </td>#}
                 <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('product_show', {'name': product.name , 'category': product.category.name})  }}">show</a>
+{#                    <a href="{{ path('product_show', {'name': product.name , 'category': product.category.name})  }}">show</a>#}
+                    <a href="{{ path('product_show', {'name': product.name})  }}">show</a>
                     <a href="{{ path('product_edit', {'name': product.name}) }}">edit</a>
                 </td>
             </tr>

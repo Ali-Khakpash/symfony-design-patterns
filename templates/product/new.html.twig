@@ -7,13 +7,13 @@
 
     {{ include('product/_form.html.twig') }}
 
-<form method="post" action="{{ path('add_cats') }}">
-    <div class="form-group">
-    <label for="catogory">Add Catogory</label>
-    <input name="cat" type="text" class="form-control" id="catogory" aria-describedby="emailHelp" placeholder="add catogory" style="width: 15%;">
-    </div>
-    <button type="submit" class="btn btn-primary">add your catogory</button>
-</form>
+{#<form method="post" action="{{ path('add_cats') }}">#}
+{#    <div class="form-group">#}
+{#    <label for="catogory">Add Catogory</label>#}
+{#    <input name="cat" type="text" class="form-control" id="catogory" aria-describedby="emailHelp" placeholder="add catogory" style="width: 15%;">#}
+{#    </div>#}
+{#    <button type="submit" class="btn btn-primary">add your catogory</button>#}
+{#</form>#}
 
     <a href="{{ path('product_index') }}">back to list</a>
 
